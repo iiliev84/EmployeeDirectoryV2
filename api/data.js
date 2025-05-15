@@ -8,19 +8,19 @@ router.route("/")
    res.send(employees)
 })
 .post((req,res)=>{
-
-    const{employee} = req.body
+    
+    const{name} = req.body
 
     if (!req.body){
-       return res.status(400).send("Request body was not found.")
+        return res.status(400).send("Request body was not found.")
     }
 
-if(!employee || !employee.name){
-    return res.status(400).send("Please send a valid employee.")
-}
+    if(name.trim() == ""){
+        return res.status(400).send("Please enter a valid employee name.")
+    }
 
-    addEmployee(employee)
-    res.status(201).send(`Added emplyee ${employee}`)
+    addEmployee({name})
+    res.status(201).send(`Added employee ${name}`)
 })
 
 export default router

@@ -16,9 +16,14 @@ export function getEmployees(){
     return employees
 }
 
-export function addEmployee(emp){
-    
-    employees.push(emp)
+export function addEmployee({id, name}){
+
+    const newEmployee = {
+        id: employees.length + 1,
+        name: name
+    }
+    employees.push(newEmployee);
+    return newEmployee
 }
 
 export default employees
